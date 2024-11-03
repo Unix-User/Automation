@@ -1,0 +1,175 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+.python-version
+pipenv/
+Pipfile.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
+*.sublime-workspace
+*.sublime-project
+.atom/
+.buildpath
+*.launch
+*.tmproj
+*.esproj
+nbproject/
+*.komodoproject
+.komodotools/
+.eclipse/
+
+# Flask
+instance/
+.webassets-cache
+flask_session/
+.flaskenv
+
+# Logs
+*.log
+logs/
+log/
+pip-log.txt
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.rdb
+*.pdb
+
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.bak
+*.tmp
+*~
+.directory
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+# Project specific
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config.local.py
+local_settings.py
+*.local
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+bower_components/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Backup files
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+
+# Media and static files (em produção estes devem ser servidos por um CDN)
+media/
+static/uploads/
+assets/uploads/
+
+# Arquivos de compilação e otimização
+*.min.js
+*.min.css
+*.map
+.sass-cache/
+*.css.map
+*.js.map
+
+# Arquivos temporários
+tmp/
+temp/
+
+# Arquivos de documentação gerados
+docs/_build/
+site/
+
+# Arquivos de ambiente e configuração
+*.env
+.env*
+!.env.example
+config.json
+settings.json
+credentials.json
+
+# Arquivos de cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# Arquivos de deploy
+deploy/
+*.deploy.json
+.vercel
+.netlify
+
+# Outros
+*.pid
+*.seed
+*.pid.lock
+.eslintcache
+.node_repl_history

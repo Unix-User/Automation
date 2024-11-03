@@ -1,0 +1,5 @@
+flask
+open-interpreter
+python-dotenv
+requests
+logging
