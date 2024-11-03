@@ -29,12 +29,14 @@ try:
     # Create multiple instances of OpenInterpreter
     agent_1 = interpreter.OpenInterpreter()
     agent_1.offline = True
+    agent_1.auto_run = True
     agent_1.llm.model = f"ollama/{app.config['MODEL_NAME']}"
     agent_1.llm.api_base = app.config['OLLAMA_API_BASE']
     agent_1.system_message = "This is agent 1."
 
     agent_2 = interpreter.OpenInterpreter()
     agent_2.offline = True
+    agent_2.auto_run = True
     agent_2.llm.model = f"ollama/{app.config['MODEL_NAME']}"
     agent_2.llm.api_base = app.config['OLLAMA_API_BASE']
     agent_2.system_message = "This is agent 2."
