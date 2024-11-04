@@ -1,0 +1,55 @@
+{% macro render_nav_item(item) %}
+    {% if item.children %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                {{ item.name }}
+            </a>
+            <ul class="dropdown-menu">
+                {% for child in item.children %}
+                    <li>
+                        <a class="dropdown-item" href="{{ child.url }}">
+                            {% if child.icon %}<i class="{{ child.icon }}"></i>{% endif %}
+                            {{ child.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            {% if item.highlight %}
+                <a class="nav-link btn btn-light text-primary ms-2" href="{{ item.url }}">
+                    {% if item.icon %}<i class="{{ item.icon }} me-1"></i>{% endif %}
+                    {{ item.name }}
+                </a>
+            {% else %}
+                <a class="nav-link" href="{{ item.url }}">
+                    {% if item.icon %}<i class="{{ item.icon }} me-1"></i>{% endif %}
+                    {{ item.name }}
+                </a>
+            {% endif %}
+        </li>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_navbar(nav_items, brand_name="Chat App") %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">
+            {{ brand_name }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% for item in nav_items %}
+                    {{ render_nav_item(item) }}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endmacro %} 

@@ -1,0 +1,70 @@
+:root {
+    /* Cores primárias - Mudando para um esquema mais moderno */
+    --primary-100: #E0F2FE;
+    --primary-200: #BAE6FD;
+    --primary-300: #7DD3FC;
+    --primary-400: #38BDF8;
+    --primary-500: #0EA5E9;  /* Nova cor principal - azul mais vibrante */
+    --primary-600: #0284C7;
+    --primary-700: #0369A1;
+    --primary-800: #075985;
+    --primary-900: #0C4A6E;
+
+    /* Cores neutras - Ajustando para maior contraste */
+    --neutral-100: #F8FAFC;
+    --neutral-200: #F1F5F9;
+    --neutral-300: #E2E8F0;
+    --neutral-400: #CBD5E1;
+    --neutral-500: #64748B;
+    --neutral-600: #475569;
+    --neutral-700: #334155;
+    --neutral-800: #1E293B;
+    --neutral-900: #0F172A;
+
+    /* Cores de estado - Atualizadas para maior acessibilidade */
+    --success: #059669;
+    --warning: #D97706;
+    --error: #DC2626;
+    --info: #2563EB;
+
+    /* Espaçamento - Otimizado para melhor ritmo vertical */
+    --spacing-xs: 0.375rem;  /* 6px */
+    --spacing-sm: 0.75rem;   /* 12px */
+    --spacing-md: 1.25rem;   /* 20px */
+    --spacing-lg: 2rem;      /* 32px */
+    --spacing-xl: 3rem;      /* 48px */
+    --spacing-2xl: 4rem;     /* 64px */
+    --spacing-3xl: 6rem;     /* 96px */
+
+    /* Sombras - Melhoradas para maior profundidade */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Border radius - Ajustado para maior consistência */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.25rem;
+    --radius-full: 9999px;
+
+    /* Novos tokens */
+    /* Tipografia */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+
+    /* Line heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+} 

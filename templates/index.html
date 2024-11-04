@@ -1,67 +1,134 @@
 {% extends "base.html" %}
 
-{% block title %}AI Chat Assistant - Home{% endblock %}
-
-{% block extra_css %}
-.hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 80px 0;
-}
-.feature-box {
-    padding: 30px;
-    text-align: center;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-.feature-box:hover {
-    transform: translateY(-10px);
-}
-.cta-section {
-    background-color: #f8f9fa;
-    padding: 80px 0;
-}
-.testimonial {
-    font-style: italic;
-    margin: 40px 0;
-}
-{% endblock %}
+{% block title %}Home - Chat App | Inteligência Artificial para Conversas{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero">
-    <div class="container text-center">
-        <h1 class="display-4 mb-4">Experience the Future of AI Chat</h1>
-        <p class="lead mb-5">Harness the power of multiple AI agents working together to solve your problems</p>
-        <a href="/chat" class="btn btn-light btn-lg">Start Chatting Now</a>
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4 animate-fade-up">Assistente IA com OpenInterpreter</h1>
+                <p class="lead mb-4 animate-fade-up" style="animation-delay: 0.2s">
+                    Uma plataforma avançada de chat que utiliza o OpenInterpreter e Ollama para fornecer respostas 
+                    inteligentes e executar código em tempo real. Ideal para desenvolvedores e entusiastas de IA.
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start animate-fade-up" style="animation-delay: 0.4s">
+                    <a href="{{ url_for('main.chat_page') }}" class="btn btn-light btn-lg px-5 me-md-2">
+                        Experimente o Chat
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg px-5">Recursos</a>
+                </div>
+            </div>
+            <div class="col-lg-6 animate-fade-up" style="animation-delay: 0.6s">
+                <!-- SVG com animação de flutuação -->
+                <div class="hero-image-wrapper">
+                    <img src="{{ url_for('static', filename='img/hero-image.svg') }}" alt="Chat App Interface" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Features Section -->
-<section class="container my-5">
-    <h2 class="text-center mb-5">Why Choose Our AI Chat Assistant?</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="feature-box">
-                <i class="fas fa-robot fa-3x mb-3 text-primary"></i>
-                <h3>Multiple AI Agents</h3>
-                <p>Get diverse perspectives from multiple AI agents working simultaneously</p>
+<section id="features" class="features-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Recursos Principais</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <i class="bi bi-code-square feature-icon"></i>
+                    <h3>Execução de Código</h3>
+                    <p>Execute e analise código em tempo real com o OpenInterpreter integrado</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <i class="bi bi-cpu feature-icon"></i>
+                    <h3>Processamento Local</h3>
+                    <p>Utilize modelos de IA localmente através do Ollama para maior privacidade e velocidade</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <i class="bi bi-chat-dots feature-icon"></i>
+                    <h3>Chat Interativo</h3>
+                    <p>Interface intuitiva para conversas naturais com o assistente IA</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="feature-box">
-                <i class="fas fa-bolt fa-3x mb-3 text-primary"></i>
-                <h3>Real-time Responses</h3>
-                <p>Instant answers to your questions with our advanced AI technology</p>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits" class="benefits-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Vantagens da Nossa Plataforma</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="benefit-item">
+                    <i class="bi bi-laptop benefit-icon"></i>
+                    <div>
+                        <h4>Desenvolvimento Ágil</h4>
+                        <p>Acelere seu desenvolvimento com assistência em tempo real para coding e debugging</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <i class="bi bi-shield-lock benefit-icon"></i>
+                    <div>
+                        <h4>Privacidade Garantida</h4>
+                        <p>Todos os dados e processamentos são realizados localmente em sua máquina</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="benefit-item">
+                    <i class="bi bi-gear-wide-connected benefit-icon"></i>
+                    <div>
+                        <h4>Integração Flexível</h4>
+                        <p>Compatível com diversos modelos do Ollama e facilmente extensível</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <i class="bi bi-lightning benefit-icon"></i>
+                    <div>
+                        <h4>Alta Performance</h4>
+                        <p>Processamento rápido e eficiente com modelos otimizados</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="feature-box">
-                <i class="fas fa-lock fa-3x mb-3 text-primary"></i>
-                <h3>Secure & Private</h3>
-                <p>Your conversations are always private and secure</p>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Perguntas Frequentes</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Como funciona o Chat App?
+                    </button>
+                </h3>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Nossa plataforma utiliza inteligência artificial avançada para fornecer respostas contextuais e precisas às suas perguntas em tempo real.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        É necessário algum conhecimento técnico?
+                    </button>
+                </h3>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Não! Nossa interface foi projetada para ser intuitiva e fácil de usar, independentemente do seu nível técnico.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -70,9 +137,92 @@
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="container text-center">
-        <h2 class="mb-4">Ready to Transform Your Conversations?</h2>
-        <p class="mb-4">Join thousands of satisfied users who have already discovered the power of AI chat</p>
-        <a href="/chat" class="btn btn-primary btn-lg">Try It Free</a>
+        <h2 class="display-5 mb-4">Pronto para Começar?</h2>
+        <p class="lead mb-4">Junte-se a milhares de usuários satisfeitos e transforme suas conversas hoje mesmo.</p>
+        <a href="{{ url_for('main.chat_page') }}" class="btn btn-light btn-lg px-5">
+            Experimente Gratuitamente
+        </a>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Smooth scroll para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Animação de entrada dos elementos
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-up');
+            }
+        });
+    });
+
+    document.querySelectorAll('section').forEach((section) => {
+        observer.observe(section);
+    });
+
+    function sendMessage() {
+        const userInput = document.getElementById('user-input');
+        const message = userInput.value;
+        
+        if (!message.trim()) {
+            console.log('Mensagem vazia, ignorando');
+            return;
+        }
+        
+        console.log('Enviando mensagem:', message);
+        
+        fetch('/api/chat/message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt: message })
+        })
+        .then(response => {
+            console.log('Status da resposta:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Dados recebidos:', data);
+            if (data.error) {
+                console.error('Erro recebido:', data.error);
+                displayError(data.error);
+                return;
+            }
+            displayMessage(data.response);
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+            displayError('Erro ao processar sua mensagem');
+        });
+        
+        userInput.value = '';
+    }
+
+    function displayMessage(message) {
+        const chatMessages = document.getElementById('chat-messages');
+        const messageElement = document.createElement('div');
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+    }
+
+    function displayError(error) {
+        const chatMessages = document.getElementById('chat-messages');
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.textContent = `Erro: ${error}`;
+        chatMessages.appendChild(errorElement);
+    }
+</script>
 {% endblock %}

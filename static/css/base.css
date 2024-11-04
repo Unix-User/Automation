@@ -17,4 +17,59 @@
 .main-content {
     margin-top: 76px;
     min-height: calc(100vh - 76px);
+}
+
+:root {
+    /* Cores do tema claro */
+    --primary-color: #2563eb;
+    --background-primary: #ffffff;
+    --background-secondary: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --message-background: #f1f5f9;
+}
+
+[data-theme="dark"] {
+    /* Cores do tema escuro */
+    --primary-color: #3b82f6;
+    --background-primary: #0f172a;
+    --background-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --message-background: #334155;
+}
+
+/* Estilos base */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: var(--background-primary);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Utilitários de acessibilidade */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 } 

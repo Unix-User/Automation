@@ -1,41 +1,94 @@
 {% extends "base.html" %}
 
-{% block title %}AI Chat Assistant - Chat{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
-{% endblock %}
-
 {% block content %}
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Chat with Our AI Assistants</h5>
+<div class="chat-container">
+    <div class="chat-sidebar">
+        <div class="sidebar-header">
+            <h2>Conversas</h2>
+            <button id="new-chat" class="icon-button" title="Nova conversa">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="conversations-list">
+            <!-- Lista de conversas será preenchida via JavaScript -->
+        </div>
+        <div class="sidebar-footer">
+            <button id="toggle-theme" class="icon-button" title="Alternar tema">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+                </svg>
+            </button>
+            <button id="settings" class="icon-button" title="Configurações">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="chat-content">
+        <header class="chat-header">
+            <div class="conversation-info">
+                <h1>Chat AI</h1>
+                <span class="model-info">GPT-3.5</span>
+            </div>
+            <div class="header-actions">
+                <button id="clear-chat" class="icon-button" title="Limpar conversa">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                    </svg>
+                </button>
+                <button id="export-chat" class="icon-button" title="Exportar conversa">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="welcome-message">
+                <div class="welcome-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                    </svg>
                 </div>
-                <div class="card-body">
-                    <div class="chat-history" id="chatHistory">
-                        <!-- Messages will be displayed here -->
-                    </div>
-                    <div class="typing-indicator" id="typingIndicator">
-                        <span class="spinner-grow spinner-grow-sm" role="status"></span>
-                        <span>Agents are thinking...</span>
-                    </div>
-                    <form id="chatForm">
-                        <div class="form-group">
-                            <label for="prompt">Your Message</label>
-                            <textarea class="form-control" id="prompt" name="prompt" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                <h2>Bem-vindo ao Chat AI</h2>
+                <p>Como posso ajudar você hoje?</p>
+                <div class="suggested-prompts">
+                    <button class="prompt-button">Explique um conceito complexo</button>
+                    <button class="prompt-button">Ajude-me com código</button>
+                    <button class="prompt-button">Analise um texto</button>
                 </div>
             </div>
         </div>
+
+        <footer class="chat-footer">
+            <form id="chat-form" class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="message-input" 
+                        placeholder="Digite sua mensagem... (Shift + Enter para nova linha)" 
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    <span class="char-counter">0/1000</span>
+                </div>
+                <button 
+                    type="submit" 
+                    id="send-button" 
+                    class="send-button" 
+                    disabled
+                    aria-label="Enviar mensagem"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </form>
+        </footer>
     </div>
 </div>
 {% endblock %}
-
-{% block extra_js %}
-<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
-{% endblock %} 
