@@ -63,5 +63,29 @@ def create_app():
 
 app = create_app()
 
+@app.route('/api/chat', methods=['POST'])
+def chat():
+    try:
+        data = request.json
+        message = data.get('message')
+        
+        if not message:
+            return jsonify({'error': 'Message is required'}), 400
+            
+        # Usa o agente OpenInterpreter para processar a mensagem
+        response = app.agent.chat(message)
+        
+        return jsonify({
+            'response': response,
+            'status': 'success'
+        })
+        
+    except Exception as e:
+        logger.error(f"Error in chat endpoint: {e}")
+        return jsonify({
+            'error': 'Internal server error',
+            'message': str(e)
+        }), 500
+
 if __name__ == '__main__':
     app.run(debug=True)

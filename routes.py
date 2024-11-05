@@ -2,6 +2,7 @@ from flask import jsonify, render_template, request, Blueprint, current_app
 from functools import wraps
 from config.navigation import get_nav_items
 import time
+from interpreter import interpreter
 
 # Blueprints para organizar rotas por funcionalidade
 main = Blueprint('main', __name__)
@@ -138,6 +139,32 @@ def health_check():
         'status': 'ok',
         'timestamp': time.time()
     })
+
+@main.route('/api/interpreter', methods=['POST'])
+def execute_interpreter():
+    try:
+        data = request.get_json()
+        command = data.get('command')
+        
+        if not command:
+            return jsonify({'error': 'No command provided'}), 400
+
+        # Configura o interpreter
+        interpreter.auto_run = True
+        interpreter.conversation_history = True
+        
+        # Executa o comando
+        response = interpreter.chat(command)
+        
+        # Processa a resposta
+        return jsonify({
+            'command_output': response.get('output', ''),
+            'assistant_message': response.get('message', ''),
+            'conversation_id': response.get('conversation_id', '')
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 def register_routes(app):
     """Função para registrar todos os blueprints e rotas"""
