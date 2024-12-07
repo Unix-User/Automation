@@ -5,11 +5,10 @@ from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from routes import register_routes
 from jinja2 import ChoiceLoader, FileSystemLoader
+from interpreter import interpreter
 
-# Load environment variables
 load_dotenv()
 
-# Configure logging
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger(__name__)
 
@@ -20,7 +19,6 @@ def create_app():
         template_folder='templates'
     )
 
-    # Configurar Jinja para procurar templates em múltiplos diretórios
     template_loader = ChoiceLoader([
         app.jinja_loader,
         FileSystemLoader([
@@ -30,33 +28,27 @@ def create_app():
     ])
     app.jinja_loader = template_loader
 
-    # Load configuration from environment variables
     app.config.update(
         OLLAMA_API_BASE=os.getenv('OLLAMA_API_BASE', 'http://localhost:11434'),
-        MODEL_NAME=os.getenv('MODEL_NAME', 'codestral'),
+        MODEL_NAME=os.getenv('OLLAMA_MODEL_NAME', 'llama3.2'),
         CACHE_TYPE='simple',
         CACHE_DEFAULT_TIMEOUT=300
     )
 
     try:
-        import interpreter
-        
-        # Create single instance of OpenInterpreter
-        agent = interpreter.OpenInterpreter()
-        agent.offline = True
-        agent.auto_run = True
-        agent.llm.model = f"ollama/{app.config['MODEL_NAME']}"
-        agent.llm.api_base = app.config['OLLAMA_API_BASE']
-        
-        # Adiciona o agent ao contexto da aplicação
-        app.agent = agent
-        
-        logger.info("AI agent initialized successfully")
+        interpreter.offline = True
+        interpreter.llm.api_base = os.getenv('OLLAMA_API_BASE', 'http://localhost:11434')
+        interpreter.llm.model = f"ollama/{os.getenv('OLLAMA_MODEL_NAME', 'llama3.2')}"
+        interpreter.llm.supports_functions = False
+        interpreter.llm.context_window = 110000
+        interpreter.llm.max_tokens = 4096
+        interpreter.auto_run = True
+        logger.info("AI agent initialized successfully with model: %s", interpreter.llm.model)
+
     except Exception as e:
-        logger.error(f"Error initializing AI agent: {e}")
+        logger.error("Error initializing AI agent: %s", e)
         raise
 
-    # Registra as rotas
     register_routes(app)
 
     return app
@@ -68,20 +60,27 @@ def chat():
     try:
         data = request.json
         message = data.get('message')
+        logger.info("Received chat request - Message: \n%s", message)
+
+        response = interpreter.chat(message)
+
+        logger.info("Generated response: %s", response)
         
-        if not message:
-            return jsonify({'error': 'Message is required'}), 400
-            
-        # Usa o agente OpenInterpreter para processar a mensagem
-        response = app.agent.chat(message)
-        
-        return jsonify({
-            'response': response,
-            'status': 'success'
-        })
-        
+        # Format response to match chat.js expectations
+        if response and len(response) > 0:
+            last_message = response[-1]
+            return jsonify({
+                'response': last_message.get('content', ''),
+                'status': 'success'
+            })
+        else:
+            return jsonify({
+                'response': '',
+                'status': 'success'
+            })
+
     except Exception as e:
-        logger.error(f"Error in chat endpoint: {e}")
+        logger.error("Error processing chat request: %s", e)
         return jsonify({
             'error': 'Internal server error',
             'message': str(e)
