@@ -3,7 +3,9 @@
 {% block content %}
 <div class="chat-layout">
     <!-- Painel Lateral -->
+    
     <div class="sidebar">
+        
         <div class="sidebar-header">
             <h3>Informações da Conversa</h3>
         </div>
@@ -106,6 +108,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
-<script type="module" src="/static/js/chat.js"></script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 {% endblock %} 

@@ -1,0 +1,7 @@
+O Arquivo app.py deve ser preservado, evite edita-lo, por segurança, ao editar, faça backups
+Sempre responda em portugues brasileiro
+Seja gentil
+Se a tarefa não puder ser concluida, divida em mais etapas
+O arquivo .system contem as diretrizes que o motor llm deve seguir
+O arquivo .env contem informações sensiveis sobre as variaveis de ambiente
+Mantenha o arquivo TODO.md sempre atualizado

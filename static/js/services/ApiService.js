@@ -1,5 +1,5 @@
 class ApiService {
-    async sendMessageToServer(message) {
+    static async sendMessage(message) {
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
@@ -16,4 +16,4 @@ class ApiService {
     }
 }
 
-export default new ApiService(); 
+export default ApiService; 

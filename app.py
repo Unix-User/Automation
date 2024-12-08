@@ -43,6 +43,9 @@ def create_app():
         interpreter.llm.context_window = 110000
         interpreter.llm.max_tokens = 4096
         interpreter.auto_run = True
+        with open('.system', 'r') as system_file:
+            interpreter.system_message += system_file.read()
+        interpreter.messages = []
         logger.info("AI agent initialized successfully with model: %s", interpreter.llm.model)
 
     except Exception as e:

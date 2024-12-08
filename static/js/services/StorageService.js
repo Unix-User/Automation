@@ -1,20 +1,20 @@
 class StorageService {
-    savePosition(x, y) {
-        localStorage.setItem('chatPosition', JSON.stringify({ x, y }));
-    }
-
-    loadPosition() {
-        const position = localStorage.getItem('chatPosition');
-        return position ? JSON.parse(position) : null;
-    }
-
-    saveDarkMode(isDarkMode) {
+    static setDarkMode(isDarkMode) {
         localStorage.setItem('darkMode', isDarkMode);
     }
 
-    getDarkMode() {
+    static getDarkMode() {
         return localStorage.getItem('darkMode') === 'true';
+    }
+
+    static setChatPosition(position) {
+        localStorage.setItem('chatPosition', JSON.stringify(position));
+    }
+
+    static getChatPosition() {
+        const position = localStorage.getItem('chatPosition');
+        return position ? JSON.parse(position) : null;
     }
 }
 
-export default new StorageService(); 
+export default StorageService; 
