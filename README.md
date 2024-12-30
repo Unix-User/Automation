@@ -74,7 +74,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👥 Autores
 
-- **Seu Nome** - *Trabalho Inicial* - [@seu-usuario](https://github.com/seu-usuario)
+- **Weverton** - *Trabalho Inicial* - [@unix-user](https://github.com/unix-user)
 
 ## 🎁 Agradecimentos
 
