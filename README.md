@@ -29,8 +29,8 @@ Uma aplicação web moderna que integra o OpenInterpreter com Ollama para fornec
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/chat-app.git
-   cd chat-app
+   git clone https://github.com/Unix-User/Automation.git
+   cd Automation
    ```
 
 2. Instale as dependências:
